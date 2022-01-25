@@ -1,0 +1,17 @@
+body{
+    background-color: #E5E5E5;
+    margin: 0;
+    padding: 15px;
+}
+
+.main-grid-container{
+    display: grid;
+    grid-template-columns: [tools] 19% [canvas] 79%;
+    grid-template-rows: [main] 100%;
+    grid-gap: 1%;
+}
+
+.toolbar-container, .canvas-container{
+    background-color: #fff;
+    height: 100vh;
+}
