@@ -77,4 +77,5 @@ toolbarForm.addEventListener('submit', preventDef);
  * TODO: mejorar el handle del color por defecto al hacer refresh, por si el input tiene otro color preseleccionado
  * TODO: agregar cambio de fondo de canvas
  * TODO: indicar al usuario què tamaño de pincel tiene seleccionado actualmente
+ * TODO: agregar un input numerico para seleccionar un tamaño especifico de pincel
  */
