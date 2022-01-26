@@ -13,10 +13,32 @@
     </header>
     <main class="main-grid-container">
         <section class="toolbar-container">
-
+            <section class="brush-size-container">
+                <h4>Tamaño del pincel</h4>
+                <form id="toolbar-form">
+                    <ul class="brush-size-list-container">
+                        <li>
+                            <button class="big-pencil" onclick="changeBrushSize(60)"></button>
+                        </li>
+                        <li>
+                            <button class="mid-pencil" onclick="changeBrushSize(30)"></button>
+                        </li>
+                        <li>
+                            <button class="small-pencil" onclick="changeBrushSize(5)"></button>
+                        </li>
+                        <li>
+                            <input type="range" name="brush-size" id="brush-size" min="5" max="60">
+                        </li>
+                        <li>
+                            <input type="color" name="brush-color" id="brush-color">
+                        </li>
+                    </ul>
+                    
+                </form>
+            </section>
         </section>
-        <section class="canvas-container" id="main-canvas">
-
+        <section class="canvas-container" id="main-canvas-container">
+            <canvas id="main-canvas"></canvas>
         </section>
     </main>
     <footer>
