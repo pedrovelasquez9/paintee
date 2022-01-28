@@ -3,14 +3,13 @@ let brushColor = "#000";
 let brushSize = 5;
 const BRUSH_FORM = "round";
 
+const colorInput = document.getElementById('brush-color');
 //Obtenemos el tamaño del contenedor del elemento canvas
 const canvasContainer = document.getElementById("main-canvas-container");
 const canvasContainerSize = [canvasContainer.offsetWidth, canvasContainer.offsetHeight]; 
 
 //Asignamos el tamaño del contenedor al elemento canvas
 const mainCanvas = document.getElementById("main-canvas");
-mainCanvas.setAttribute("width", canvasContainerSize[0]);
-mainCanvas.setAttribute("height", canvasContainerSize[1]);
 
 //Inicializamos el contexto del canvas
 const context = mainCanvas.getContext("2d");
@@ -50,14 +49,27 @@ const mouseUp = (evt) => {
 }
 
 //Funcion para cambiar tamaño del pincel
-const changeBrushSize = (size) => {
+const changeBrushSize = (elem, size) => {
+    const BRUSH_IDS = [
+        "big-brush-btn",
+        "mid-brush-btn",
+        "small-brush-btn"
+    ];
+    
+    BRUSH_IDS.forEach(item => {
+        if(item !== elem.id){
+            const temp_elem = document.getElementById(item);
+            temp_elem.classList.remove('active-brush-size');
+        }
+    });
+
+    elem.classList.add('active-brush-size');
     brushSize = size;
 }
 
 //Funcion para cambiar el color del pincel
-const colorInput = document.getElementById('brush-color');
-const setBrushColor = () => {
-    brushColor = colorInput.value;
+const setBrushColor = (val) => {
+    brushColor = val;
 };
 
 //Evita que el form haga un refresh
@@ -66,16 +78,26 @@ const preventDef = (evt) => {
     evt.preventDefault();
 };
 
+//Funcion para cambiar el color del canvas
+const changeCanvasBackground = (color) => {
+    context.fillStyle = color;
+    context.fillRect(0, 0, canvasContainer.offsetWidth, canvasContainer.offsetHeight)
+}
+
+//definir color por defecto en el refresh
+colorInput.value = brushColor;
+
+
+mainCanvas.setAttribute("width", canvasContainerSize[0]);
+mainCanvas.setAttribute("height", canvasContainerSize[1]);
 mainCanvas.addEventListener('mousedown', mouseClick);
 mainCanvas.addEventListener('mouseup', mouseUp);
-colorInput.addEventListener('input', setBrushColor);
 toolbarForm.addEventListener('submit', preventDef);
-
+changeCanvasBackground("#fff");
 
 /**
- * TODO: agregar colores por defecto ademas del input color
- * TODO: mejorar el handle del color por defecto al hacer refresh, por si el input tiene otro color preseleccionado
+ * TODO: agregar borrador
  * TODO: agregar cambio de fondo de canvas
- * TODO: indicar al usuario què tamaño de pincel tiene seleccionado actualmente
  * TODO: agregar un input numerico para seleccionar un tamaño especifico de pincel
+ * TODO: conectar con api de unsplash y crear una modal con lista de imagenes para que el usuario elija una como fondo del canvas
  */

@@ -11,10 +11,21 @@ body{
     grid-gap: 1%;
 }
 
+.brush-range-container{
+    display: grid;
+    grid-template-columns: [input] 22% [range] 65%;
+    grid-template-rows: [main] 100%;
+    grid-gap: 10px;
+    justify-content: center;
+}
+
 .toolbar-container, .canvas-container{
-    background-color: #fff;
     height: 100vh;
     text-align: center;
+}
+
+.toolbar-container{
+    background-color: #fff;
 }
 
 .big-pencil{
@@ -46,4 +57,47 @@ body{
 
 .brush-size-list-container li {
     margin-bottom: 10px;
+}
+
+.active-brush-size{
+    box-shadow: inset 0 0 0px 3px #5d7ad6;
+}
+
+.color-grid{
+    display: grid;
+    grid-template-columns: [color1] 30% [color2] 30% [color3] 30%;
+    grid-template-rows: [color-1] 100% [color-2] 100%;
+    justify-items: center;
+    grid-gap: 10px;
+}
+
+.color-btns{
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+}
+
+.blue-btn{
+    background-color: #2c2cc9;
+}
+
+.red-btn{
+    background-color: #ff0000;
+}
+
+.yellow-btn{
+    background-color: #ffff00;
+}
+
+.green-btn{
+    background-color: #32a852;
+}
+
+.black-btn{
+    background-color: #000;
+}
+
+.pink-btn{
+    background-color: #d632bb;
 }

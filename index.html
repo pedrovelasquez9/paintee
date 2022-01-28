@@ -9,7 +9,6 @@
 </head>
 <body>
     <header>
-        <h1>PaintEE</h1>
     </header>
     <main class="main-grid-container">
         <section class="toolbar-container">
@@ -18,19 +17,32 @@
                 <form id="toolbar-form">
                     <ul class="brush-size-list-container">
                         <li>
-                            <button class="big-pencil" onclick="changeBrushSize(60)"></button>
+                            <button class="big-pencil" id="big-brush-btn" onclick="changeBrushSize(this, 60)"></button>
                         </li>
                         <li>
-                            <button class="mid-pencil" onclick="changeBrushSize(30)"></button>
+                            <button class="mid-pencil" id="mid-brush-btn" onclick="changeBrushSize(this, 30)"></button>
                         </li>
                         <li>
-                            <button class="small-pencil" onclick="changeBrushSize(5)"></button>
+                            <button class="small-pencil" id="small-brush-btn" onclick="changeBrushSize(this, 5)"></button>
                         </li>
                         <li>
-                            <input type="range" name="brush-size" id="brush-size" min="5" max="60">
+                            <section class="brush-range-container">
+                                <input type="number" name="brush-size-num" id="brush-size-num" min="5" max="60" step=".1">
+                                <input type="range" name="brush-size" id="brush-size" min="5" max="60" step="1">
+                            </section>
                         </li>
                         <li>
-                            <input type="color" name="brush-color" id="brush-color">
+                            <section class="color-grid">
+                                <button class="color-btns red-btn" onclick="setBrushColor('#ff0000')"></button>
+                                <button class="color-btns blue-btn" onclick="setBrushColor('#2c2cc9')"></button>
+                                <button class="color-btns green-btn" onclick="setBrushColor('#32a852')"></button>
+                                <button class="color-btns yellow-btn" onclick="setBrushColor('#ffff00')"></button>
+                                <button class="color-btns pink-btn" onclick="setBrushColor('#d632bb')"></button>
+                                <button class="color-btns black-btn" onclick="setBrushColor('#000')"></button>
+                            </section>
+                        </li>
+                        <li>
+                            <input type="color" name="brush-color" id="brush-color" oninput="setBrushColor(this.value)">
                         </li>
                     </ul>
                     
