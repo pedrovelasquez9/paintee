@@ -1,9 +1,32 @@
 //Variables del pincel
 let brushColor = "#000";
 let brushSize = 5;
+let eraserSize = 50;
+let canvasBackgroundColor = "#fff";
 const BRUSH_FORM = "round";
+const BRUSH_TYPE = "pincel";
+const COLOR_TYPE = "color";
+const BRUS_SIZE_ACTIVE_CLASS = "active-brush-size";
+const BRUS_COLOR_ACTIVE_CLASS = "active-color";
+const BRUSH_IDS = [
+    "big-brush-btn",
+    "mid-brush-btn",
+    "small-brush-btn"
+];
+const COLOR_IDS = [
+    "red-btn",
+    "blue-btn",
+    "green-btn",
+    "yellow-btn",
+    "pink-btn",
+    "black-btn",
+    "brush-color-input",
+    "eraser"
+];
 
-const colorInput = document.getElementById('brush-color');
+
+const eraserBtn = document.getElementById("eraser");
+const colorInput = document.getElementById('brush-color-input');
 //Obtenemos el tamaño del contenedor del elemento canvas
 const canvasContainer = document.getElementById("main-canvas-container");
 const canvasContainerSize = [canvasContainer.offsetWidth, canvasContainer.offsetHeight]; 
@@ -50,26 +73,30 @@ const mouseUp = (evt) => {
 
 //Funcion para cambiar tamaño del pincel
 const changeBrushSize = (elem, size) => {
-    const BRUSH_IDS = [
-        "big-brush-btn",
-        "mid-brush-btn",
-        "small-brush-btn"
-    ];
-    
-    BRUSH_IDS.forEach(item => {
+    //TODO: validar cuando se usa desde el range
+    brushSize = size;
+    activarElemento(elem, BRUSH_TYPE);
+}
+
+//Funcion para establecer elemento (pincel o color) seleccionado por el usuario
+const activarElemento = (elem, type) => {
+    const elementsToProcess = type == BRUSH_TYPE ? BRUSH_IDS : COLOR_IDS;
+    const classToUse = type == BRUSH_TYPE ? BRUS_SIZE_ACTIVE_CLASS : BRUS_COLOR_ACTIVE_CLASS;
+
+    elementsToProcess.forEach(item => {
         if(item !== elem.id){
             const temp_elem = document.getElementById(item);
-            temp_elem.classList.remove('active-brush-size');
+            temp_elem.classList.remove(classToUse);
         }
     });
 
-    elem.classList.add('active-brush-size');
-    brushSize = size;
+    elem.classList.add(classToUse);
 }
 
 //Funcion para cambiar el color del pincel
-const setBrushColor = (val) => {
+const setBrushColor = (elem, val) => {
     brushColor = val;
+    activarElemento(elem, COLOR_TYPE);
 };
 
 //Evita que el form haga un refresh
@@ -81,7 +108,13 @@ const preventDef = (evt) => {
 //Funcion para cambiar el color del canvas
 const changeCanvasBackground = (color) => {
     context.fillStyle = color;
+    canvasBackgroundColor = color;
     context.fillRect(0, 0, canvasContainer.offsetWidth, canvasContainer.offsetHeight)
+}
+
+const erase = (e) => {
+    brushSize = eraserSize;
+    setBrushColor(e.originalTarget, canvasBackgroundColor);
 }
 
 //definir color por defecto en el refresh
@@ -93,11 +126,15 @@ mainCanvas.setAttribute("height", canvasContainerSize[1]);
 mainCanvas.addEventListener('mousedown', mouseClick);
 mainCanvas.addEventListener('mouseup', mouseUp);
 toolbarForm.addEventListener('submit', preventDef);
-changeCanvasBackground("#fff");
+eraserBtn.addEventListener('click', erase);
+changeCanvasBackground(canvasBackgroundColor);
 
 /**
- * TODO: agregar borrador
+ * TODO: agregar funcionalidad al range
+ * TODO: arreglar el click en el elemento i para que haga el set de la clase en el borrador
+ * TODO: Agregar control de color por defecto para cuando se quita el borrador por un pincel
  * TODO: agregar cambio de fondo de canvas
+ * TODO: agregar background y modo nocturno
  * TODO: agregar un input numerico para seleccionar un tamaño especifico de pincel
  * TODO: conectar con api de unsplash y crear una modal con lista de imagenes para que el usuario elija una como fondo del canvas
  */
