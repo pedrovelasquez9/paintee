@@ -24,7 +24,7 @@ const COLOR_IDS = [
     "eraser"
 ];
 
-
+const brushSizeInfoElem = document.getElementById("brush-size-info");
 const eraserBtn = document.getElementById("eraser");
 const colorInput = document.getElementById('brush-color-input');
 //Obtenemos el tamaño del contenedor del elemento canvas
@@ -72,10 +72,14 @@ const mouseUp = (evt) => {
 }
 
 //Funcion para cambiar tamaño del pincel
-const changeBrushSize = (elem, size) => {
-    //TODO: validar cuando se usa desde el range
-    brushSize = size;
+const setActiveBrushSize = (elem, size) => {
+    changeBrushSize(size);
     activarElemento(elem, BRUSH_TYPE);
+}
+
+const changeBrushSize = (size) => {
+    brushSizeInfoElem.innerText = size;
+    brushSize = size;
 }
 
 //Funcion para establecer elemento (pincel o color) seleccionado por el usuario
@@ -130,7 +134,6 @@ eraserBtn.addEventListener('click', erase);
 changeCanvasBackground(canvasBackgroundColor);
 
 /**
- * TODO: agregar funcionalidad al range
  * TODO: arreglar el click en el elemento i para que haga el set de la clase en el borrador
  * TODO: Agregar control de color por defecto para cuando se quita el borrador por un pincel
  * TODO: agregar cambio de fondo de canvas

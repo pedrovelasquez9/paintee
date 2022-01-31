@@ -20,16 +20,19 @@
                             <h3><i class="fas fa-paint-brush"></i> Tamaño del pincel</h3>
                         </li>
                         <li>
-                            <button class="big-pencil" id="big-brush-btn" onclick="changeBrushSize(this, 60)"></button>
+                            <button class="big-pencil" id="big-brush-btn" onclick="setActiveBrushSize(this, 60)"></button>
                         </li>
                         <li>
-                            <button class="mid-pencil" id="mid-brush-btn" onclick="changeBrushSize(this, 30)"></button>
+                            <button class="mid-pencil" id="mid-brush-btn" onclick="setActiveBrushSize(this, 30)"></button>
                         </li>
                         <li>
-                            <button class="small-pencil" id="small-brush-btn" onclick="changeBrushSize(this, 5)"></button>
+                            <button class="small-pencil" id="small-brush-btn" onclick="setActiveBrushSize(this, 5)"></button>
                         </li>
                         <li>
                             <input type="range" name="brush-size" id="brush-size" min="5" max="60" step="1" onchange="changeBrushSize(this.value)">
+                        </li>
+                        <li>
+                            <span id="brush-size-info"></span>
                         </li>
                         <hr class="category-separator">
                         <li class="control-category">
