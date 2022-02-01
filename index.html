@@ -40,19 +40,24 @@
                         </li>
                         <li>
                             <section class="color-grid">
-                                <button class="color-btns red-btn" id="red-btn"  onclick="setBrushColor(this, '#ff0000')"></button>
-                                <button class="color-btns blue-btn" id="blue-btn" onclick="setBrushColor(this, '#2c2cc9')"></button>
-                                <button class="color-btns green-btn" id="green-btn" onclick="setBrushColor(this, '#32a852')"></button>
-                                <button class="color-btns yellow-btn" id="yellow-btn" onclick="setBrushColor(this, '#ffff00')"></button>
-                                <button class="color-btns pink-btn" id="pink-btn" onclick="setBrushColor(this, '#d632bb')"></button>
-                                <button class="color-btns black-btn" id="black-btn" onclick="setBrushColor(this, '#000')"></button>
+                                <button class="color-btns red-btn" id="red-btn"  onclick="setActiveColor(this, '#ff0000')"></button>
+                                <button class="color-btns blue-btn" id="blue-btn" onclick="setActiveColor(this, '#2c2cc9')"></button>
+                                <button class="color-btns green-btn" id="green-btn" onclick="setActiveColor(this, '#32a852')"></button>
+                                <button class="color-btns yellow-btn" id="yellow-btn" onclick="setActiveColor(this, '#ffff00')"></button>
+                                <button class="color-btns pink-btn" id="pink-btn" onclick="setActiveColor(this, '#d632bb')"></button>
+                                <button class="color-btns black-btn" id="black-btn" onclick="setActiveColor(this, '#000')"></button>
                             </section>
                         </li>
-                        <li>
-                            <input type="color" name="brush-color" class="brush-color-input" id="brush-color-input" oninput="setBrushColor(this, this.value)">
+                        <li class="color-inputs-container">
+                            <i class="fas fa-palette"></i>
+                            <input type="color" name="brush-color" class="brush-color-input" id="brush-color-input" oninput="setBrushColor(this.value)">
                         </li>
-                        <li>
-                            <button id="eraser" class="eraser-btn"><i class="fas fa-eraser"></i></button>
+                        <li class="color-inputs-container">
+                            <i class="far fa-image"></i>
+                            <input type="color" name="brush-color" class="brush-color-input" id="brush-color-input" oninput="changeCanvasBackground(this.value)">
+                        </li>
+                        <li class="eraser-container">
+                            <button id="eraser" class="eraser-btn fas fa-eraser"></button>
                         </li>
                     </ul>
                     

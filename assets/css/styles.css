@@ -123,6 +123,11 @@ body{
     padding: 0;
 }
 
+.color-inputs-container, .eraser-container{
+    text-align: left;
+    padding: 10px 0px 0px 20px;
+}
+
 .eraser-btn{
     padding: 6px 10px 6px 10px;
     font-size: 15px;
