@@ -25,6 +25,8 @@ const COLOR_IDS = [
     "brush-color-input"
 ];
 
+const canvasColorInput = document.getElementById('canvas-color-input');
+canvasColorInput.value = "#ffffff";
 const brushSizeRange = document.getElementById("brush-size");
 const brushSizeInfoElem = document.getElementById("brush-size-info");
 const eraserBtn = document.getElementById("eraser");
@@ -145,7 +147,12 @@ eraserBtn.addEventListener('click', erase);
 changeCanvasBackground(canvasBackgroundColor);
 
 /**
- * TODO: agregar background y modo nocturno
- * TODO: agregar un input numerico para seleccionar un tamaño especifico de pincel
- * TODO: conectar con api de unsplash y crear una modal con lista de imagenes para que el usuario elija una como fondo del canvas
+ * TODO: agregar guardado de imagen 
+ * TODO: agregar sync con localStorage
+ * TODO: probar app con tableta grafica
+ * TODO: agregar musica/efectos de sonido tipo relax 
+ * TODO: agregar modo nocturno
+ * TODO: agregar logo y titulo de app 
+ * TODO: mejorar la distribucion del toolbar
+ * TODO: evaluar refactor 
  */

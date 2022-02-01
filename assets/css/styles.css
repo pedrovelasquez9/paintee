@@ -1,5 +1,7 @@
 body{
-    background-color: #E5E5E5;
+    background-image: url("../img/PEE_background_clean.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 0;
     padding: 15px;
 }
