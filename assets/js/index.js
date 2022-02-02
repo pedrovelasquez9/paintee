@@ -31,6 +31,7 @@ const brushSizeRange = document.getElementById("brush-size");
 const brushSizeInfoElem = document.getElementById("brush-size-info");
 const eraserBtn = document.getElementById("eraser");
 const colorInput = document.getElementById('brush-color-input');
+const saveBtn = document.getElementById('save-draw');
 //Obtenemos el tamaño del contenedor del elemento canvas
 const canvasContainer = document.getElementById("main-canvas-container");
 const canvasContainerSize = [canvasContainer.offsetWidth, canvasContainer.offsetHeight]; 
@@ -134,6 +135,12 @@ const erase = (e) => {
     e.originalTarget.classList.add(BRUS_COLOR_ACTIVE_CLASS);
 }
 
+//Funcion para guardar imagen
+const saveDrawing = () => {
+    const image = mainCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    window.location.href = image;
+}
+
 //definir color por defecto en el refresh
 colorInput.value = brushColor;
 
@@ -144,13 +151,13 @@ mainCanvas.addEventListener('mousedown', mouseClick);
 mainCanvas.addEventListener('mouseup', mouseUp);
 toolbarForm.addEventListener('submit', preventDef);
 eraserBtn.addEventListener('click', erase);
+saveBtn.addEventListener('click', saveDrawing);
 changeCanvasBackground(canvasBackgroundColor);
 
-/**
- * TODO: agregar guardado de imagen 
+/** 
  * TODO: agregar sync con localStorage
+ * TODO: agregar musica/efectos de sonido tipo relax
  * TODO: probar app con tableta grafica
- * TODO: agregar musica/efectos de sonido tipo relax 
  * TODO: agregar modo nocturno
  * TODO: agregar logo y titulo de app 
  * TODO: mejorar la distribucion del toolbar

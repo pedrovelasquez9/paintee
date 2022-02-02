@@ -33,7 +33,7 @@ body{
 }
 
 .toolbar-container, .canvas-container{
-    height: 100vh;
+    height: auto;
     text-align: center;
 }
 
@@ -136,4 +136,9 @@ body{
     background: #ddd;
     border: none;
     border-radius: 5px;
+}
+
+.audio-controls{
+    width: -moz-available;
+    width: -webkit-available;
 }
