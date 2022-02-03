@@ -12,7 +12,7 @@
     <header>
     </header>
     <main class="main-grid-container">
-        <section class="toolbar-container">
+        <section class="toolbar-container" id="toolbar-container" data-modo-nocturno="false">
             <section class="brush-size-container">
                 <form id="toolbar-form">
                     <ul class="brush-size-list-container">
@@ -45,7 +45,7 @@
                                 <button class="color-btns green-btn" id="green-btn" onclick="setActiveColor(this, '#32a852')"></button>
                                 <button class="color-btns yellow-btn" id="yellow-btn" onclick="setActiveColor(this, '#ffff00')"></button>
                                 <button class="color-btns pink-btn" id="pink-btn" onclick="setActiveColor(this, '#d632bb')"></button>
-                                <button class="color-btns black-btn" id="black-btn" onclick="setActiveColor(this, '#000')"></button>
+                                <button class="color-btns black-btn" id="black-btn" onclick="setActiveColor(this, '#000000')"></button>
                             </section>
                         </li>
                         <li class="color-inputs-container">
@@ -76,7 +76,11 @@
                             <h3><i class="fas fa-moon"></i></i> Acciones</h3>
                         </li>
                         <li>
+                            <input type="checkbox" name="modo-nocturno" id="modo-nocturno">
+                        </li>
+                        <li>
                             <button id="save-draw">Guardar dibujo</button>
+                            <button id="clear-canvas">Limpiar lienzo</button>
                         </li>
                         <!--TODO: modo nocturno y guardado-->
                     </ul>
