@@ -28,6 +28,11 @@ const COLOR_IDS = [
   "black-btn",
   "brush-color-input",
 ];
+const AUDIO_TRACKS = [
+  "assets/audio/track1.mp3",
+  "assets/audio/track2.mp3",
+  "assets/audio/track3.mp3",
+];
 
 const toolbarContainer = document.getElementById("toolbar-container");
 const nocturnoBtn = document.getElementById("modo-nocturno");
@@ -39,6 +44,7 @@ const brushSizeInfoElem = document.getElementById("brush-size-info");
 const eraserBtn = document.getElementById("eraser");
 const colorInput = document.getElementById("brush-color-input");
 const saveBtn = document.getElementById("save-draw");
+const audioTag = document.getElementById("audio-bar");
 //Obtenemos el tamaño del contenedor del elemento canvas
 const canvasContainer = document.getElementById("main-canvas-container");
 const canvasContainerSize = [
@@ -173,10 +179,8 @@ const erase = (e) => {
 
 //Funcion para guardar imagen
 const saveDrawing = () => {
-  const image = mainCanvas
-    .toDataURL("image/png")
-    .replace("image/png", "image/octet-stream");
-  window.location.href = image;
+  const image = mainCanvas.toDataURL("image/jpeg");
+  saveBtn.setAttribute("href", image);
 };
 
 //Función para guardar en el localStorage los settings
@@ -190,8 +194,18 @@ const toggleNocturno = () => {
   toolbarContainer.dataset.modoNocturno = settings.modoNocturno.toString();
 };
 
-//definir color por defecto en el refresh
+//Función de reproducción aleatoria automática
+const playRandom = () => {
+  let audioToPlay =
+    AUDIO_TRACKS[Math.floor(Math.random() * AUDIO_TRACKS.length)];
+  audioTag.src = audioToPlay;
+};
+
+//Inicializar variables de settings
+toolbarContainer.dataset.modoNocturno = settings.modoNocturno.toString();
+nocturnoBtn.checked = settings.modoNocturno;
 colorInput.value = settings.brushColor;
+playRandom();
 
 mainCanvas.setAttribute("width", canvasContainerSize[0]);
 mainCanvas.setAttribute("height", canvasContainerSize[1]);
@@ -207,6 +221,7 @@ nocturnoBtn.addEventListener("click", toggleNocturno);
 
 /**
  * TODO: buscar biblioteca de musica/efectos de sonido tipo relax
+ * TODO: buscar una fuente decente
  * TODO: agregar logo y titulo de app
  * TODO: revisar borrador al cambiar color de fondo
  * TODO: mejorar la distribucion del toolbar
