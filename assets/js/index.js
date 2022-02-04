@@ -220,10 +220,7 @@ clearCanvasBtn.addEventListener("click", clearCanvas);
 nocturnoBtn.addEventListener("click", toggleNocturno);
 
 /**
- * TODO: buscar biblioteca de musica/efectos de sonido tipo relax
- * TODO: buscar una fuente decente
  * TODO: agregar logo y titulo de app
  * TODO: revisar borrador al cambiar color de fondo
- * TODO: mejorar la distribucion del toolbar
  * TODO: evaluar refactor
  */
