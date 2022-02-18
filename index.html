@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Acme&family=Caveat:wght@500&family=Indie+Flower&family=Kanit:wght@300&family=Rowdies:wght@300&family=Short+Stack&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/all.min.css" />
+    <title>PaintEE</title>
+  </head>
+  <body>
+    <main class="main-grid-container">
+      <section
+        class="toolbar-container"
+        id="toolbar-container"
+        data-modo-nocturno="false"
+      >
+        <section class="brush-size-container">
+          <form id="toolbar-form">
+            <ul class="brush-size-list-container">
+              <li class="control-category">
+                <h3><i class="fas fa-paint-brush"></i> Tamaño del pincel</h3>
+              </li>
+              <section class="brush-grid">
+                <ul>
+                  <li>
+                    <button
+                      class="big-pencil"
+                      id="big-brush-btn"
+                      onclick="setActiveBrushSize(this, 60)"
+                    ></button>
+                  </li>
+                  <li>
+                    <button
+                      class="mid-pencil"
+                      id="mid-brush-btn"
+                      onclick="setActiveBrushSize(this, 30)"
+                    ></button>
+                  </li>
+                  <li>
+                    <button
+                      class="small-pencil"
+                      id="small-brush-btn"
+                      onclick="setActiveBrushSize(this, 5)"
+                    ></button>
+                  </li>
+                </ul>
+                <ul>
+                  <li>
+                    <input
+                      type="range"
+                      name="brush-size"
+                      id="brush-size"
+                      min="5"
+                      max="60"
+                      step="1"
+                      class="brush-range-input"
+                      onchange="changeBrushSize(this.value)"
+                    />
+                    <p id="brush-size-info" class="brush-size-info"></p>
+                  </li>
+                </ul>
+              </section>
+              <hr class="category-separator" />
+              <li class="control-category">
+                <h3><i class="fas fa-palette"></i> Color del pincel</h3>
+              </li>
+              <li>
+                <section class="color-grid">
+                  <button
+                    class="color-btns red-btn"
+                    id="red-btn"
+                    onclick="setActiveColor(this, '#ff0000')"
+                  ></button>
+                  <button
+                    class="color-btns blue-btn"
+                    id="blue-btn"
+                    onclick="setActiveColor(this, '#2c2cc9')"
+                  ></button>
+                  <button
+                    class="color-btns green-btn"
+                    id="green-btn"
+                    onclick="setActiveColor(this, '#32a852')"
+                  ></button>
+                  <button
+                    class="color-btns yellow-btn"
+                    id="yellow-btn"
+                    onclick="setActiveColor(this, '#ffff00')"
+                  ></button>
+                  <button
+                    class="color-btns pink-btn"
+                    id="pink-btn"
+                    onclick="setActiveColor(this, '#d632bb')"
+                  ></button>
+                  <button
+                    class="color-btns black-btn"
+                    id="black-btn"
+                    onclick="setActiveColor(this, '#000000')"
+                  ></button>
+                </section>
+              </li>
+              <li class="color-inputs-container">
+                <section class="brush-grid">
+                  <input
+                    type="color"
+                    name="brush-color"
+                    class="brush-color-input"
+                    id="brush-color-input"
+                    oninput="setBrushColor(this.value)"
+                  />
+                  <button id="eraser" class="eraser-btn fas fa-eraser"></button>
+                </section>
+              </li>
+              <hr class="category-separator" />
+              <li class="control-category">
+                <h3><i class="far fa-image"></i> Color del lienzo</h3>
+              </li>
+              <li class="color-canvas-container">
+                <input
+                  type="color"
+                  name="canvas-color"
+                  class="brush-color-input"
+                  id="canvas-color-input"
+                  oninput="changeCanvasBackground(this.value)"
+                />
+              </li>
+              <hr class="category-separator" />
+              <li class="control-category">
+                <h3><i class="fas fa-music"></i> Sonidos</h3>
+              </li>
+              <li class="audio-container">
+                <audio controls id="audio-bar" class="audio-controls"></audio>
+              </li>
+              <!--TODO-->
+              <hr class="category-separator" />
+              <li class="control-category">
+                <h3><i class="fas fa-cogs"></i> Acciones</h3>
+              </li>
+              <li class="actions-grid">
+                <div class="onoffswitch">
+                  <input
+                    type="checkbox"
+                    name="modo-nocturno"
+                    id="modo-nocturno"
+                    class="onoffswitch-checkbox"
+                    tabindex="0"
+                  />
+                  <label class="onoffswitch-label" for="modo-nocturno">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                  </label>
+                </div>
+                <a
+                  id="save-draw"
+                  download="mi_dibujo.png"
+                  class="action-btn save-btn"
+                >
+                  <i class="fas fa-save"></i>
+                </a>
+                <button id="clear-canvas" class="action-btn clean-btn">
+                  <i class="fas fa-air-freshener"></i>
+                </button>
+              </li>
+              <!--TODO: modo nocturno y guardado-->
+            </ul>
+          </form>
+        </section>
+      </section>
+      <section class="canvas-container" id="main-canvas-container">
+        <canvas id="main-canvas"></canvas>
+      </section>
+    </main>
+    <footer class="main-footer-container">
+      <h1>PaintEE</h1>
+      <p>
+        - Desarrollado en vivo en el canal de
+        <a href="https://my.bio/prog-es" target="_blank">
+          Programación en Español
+        </a>
+      </p>
+    </footer>
+    <script src="assets/js/index.js"></script>
+  </body>
+</html>
